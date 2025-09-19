@@ -11,16 +11,20 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
       font-family: 'Segoe UI', sans-serif;
       color: #fff;
       text-align: center;
       overflow: hidden;
+      background: #ff9a9e; /* color base para cuando cargan las partículas */
     }
+
     h1 {
       font-size: 3rem;
       animation: latido 2s infinite;
+      z-index: 2;
+      position: relative;
     }
+
     @keyframes latido {
       0% { transform: scale(1); }
       25% { transform: scale(1.1); }
@@ -28,22 +32,30 @@
       75% { transform: scale(1.1); }
       100% { transform: scale(1); }
     }
+
     .frases {
       margin-top: 20px;
       font-size: 1.2rem;
       max-width: 600px;
+      z-index: 2;
+      position: relative;
     }
+
     img {
       margin-top: 20px;
       border-radius: 20px;
       width: 300px;
       box-shadow: 0 0 15px rgba(0,0,0,0.3);
       animation: aparecer 2s ease-in-out;
+      z-index: 2;
+      position: relative;
     }
+
     @keyframes aparecer {
       from { opacity: 0; transform: scale(0.9); }
       to { opacity: 1; transform: scale(1); }
     }
+
     button {
       margin-top: 20px;
       padding: 10px 20px;
@@ -54,11 +66,15 @@
       font-size: 1rem;
       cursor: pointer;
       transition: 0.3s;
+      z-index: 2;
+      position: relative;
     }
+
     button:hover {
       background: #ff3f6d;
     }
-    /* Globitos 🎈 */
+
+    /* Globitos adicionales */
     .balloon {
       position: absolute;
       bottom: -150px;
@@ -68,6 +84,7 @@
       border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
       animation: subir 10s linear infinite;
     }
+
     .balloon::after {
       content: '';
       position: absolute;
@@ -78,13 +95,27 @@
       left: 50%;
       transform: translateX(-50%);
     }
+
     @keyframes subir {
       0% { transform: translateY(0) rotate(0deg); opacity: 1; }
       100% { transform: translateY(-110vh) rotate(20deg); opacity: 0; }
     }
+
+    /* Contenedor de partículas */
+    #particles-js {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1; /* detrás de todo el contenido */
+    }
   </style>
 </head>
 <body>
+  <!-- Contenedor de partículas -->
+  <div id="particles-js"></div>
+
   <h1>🎂 Feliz cumpleaños, Abigail 💕</h1>
   <div class="frases">
     <p>Hoy, 30 de septiembre, celebro el regalo más hermoso que me dio la vida: <b>TÚ</b>.</p>
@@ -92,13 +123,25 @@
     <p>Gracias por existir y por hacer mi mundo más mágico cada día. ✨</p>
     <p>Te amo más de lo que las palabras pueden decir. ❤️</p>
   </div>
+  <div class="frases">
+  <p>Hoy, 30 de septiembre, celebro el regalo más hermoso que me dio la vida: <b>TÚ</b>.</p>
+  <p>Eres mi alegría, mi paz y mi sueño más bonito. 💖</p>
+  <p>Gracias por existir y por hacer mi mundo más mágico cada día. ✨</p>
+  <p>Te amo más de lo que las palabras pueden decir. ❤️</p>
+  <p>Cada momento a tu lado es un tesoro que guardo en mi corazón. 💕</p>
+  <p>Tu risa ilumina mis días y tu abrazo me hace sentir en casa. 🌸</p>
+  <p>Contigo aprendí que el amor verdadero existe y lo vivo cada día. 🌟</p>
+  <p>Abigail, eres mi inspiración, mi calma y mi felicidad infinita. 💫</p>
+  <p>Hoy y siempre, quiero que sepas que eres el regalo más hermoso que la vida me dio. 🎁</p>
+</div>
 
-  <!-- Imagen personalizada desde Google Drive -->
+
+  <!-- Imagen personalizada -->
   <img src="https://i.imgur.com/htEdykO.jpeg" alt="Imagen personalizada">
 
-  <button onclick="playSong()">🎶 Escuchar 'Esta es pa' ti'</button>
+  <button onclick="playSong()">🎶 Escuchar 'Esta es pa' ti - Eme Malafe'</button>
 
-  <!-- Canción desde la carpeta local -->
+  <!-- Canción -->
   <audio id="cancion" src="musica eme-malafe-esta-es-pa-ti.mp3"></audio>
 
   <script>
@@ -107,7 +150,7 @@
       cancion.play();
     }
 
-    // Globitos 🎈
+    // Globitos flotando
     const colores = ["#ff6f91","#ff9671","#ffc75f","#f9f871","#845ec2","#00c9a7"];
     function crearGlobos() {
       const globo = document.createElement("div");
@@ -120,6 +163,33 @@
     }
     setInterval(crearGlobos, 1000);
   </script>
+
+  <!-- Partículas JS -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 40, "density": { "enable": true, "value_area": 800 } },
+        "shape": {
+          "type": ["circle", "image"],
+          "image": [
+            { "src": "https://i.imgur.com/8yK2z3p.png", "width": 32, "height": 32 }, // pastel
+            { "src": "https://i.imgur.com/N3rYF1F.png", "width": 32, "height": 32 }, // globo
+            { "src": "https://i.imgur.com/kU6Xt6l.png", "width": 32, "height": 32 }  // confeti
+          ]
+        },
+        "opacity": { "value": 0.8, "random": true },
+        "size": { "value": 30, "random": true },
+        "move": { "enable": true, "speed": 2, "direction": "top", "out_mode": "out" }
+      },
+      "interactivity": {
+        "events": { "onhover": { "enable": true, "mode": "repulse" } },
+        "modes": { "repulse": { "distance": 100 } }
+      },
+      "retina_detect": true
+    });
+  </script>
 </body>
 </html>
+
 

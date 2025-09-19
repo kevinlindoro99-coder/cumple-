@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Feliz Cumpleaños, mi amor 💖</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      text-align: center;
+      overflow: hidden;
+    }
+    h1 {
+      font-size: 3rem;
+      animation: latido 2s infinite;
+    }
+    @keyframes latido {
+      0% { transform: scale(1); }
+      25% { transform: scale(1.1); }
+      50% { transform: scale(1); }
+      75% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    .frases {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      max-width: 600px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #ff6f91;
+      border: none;
+      border-radius: 20px;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #ff3f6d;
+    }
+    /* Globitos 🎈 */
+    .balloon {
+      position: absolute;
+      bottom: -150px;
+      width: 60px;
+      height: 80px;
+      background: red;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      animation: subir 10s linear infinite;
+    }
+    .balloon::after {
+      content: '';
+      position: absolute;
+      width: 2px;
+      height: 50px;
+      background: white;
+      top: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    @keyframes subir {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-110vh) rotate(20deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <h1>🎂 Feliz cumpleaños, Abigail 💕</h1>
+  <div class="frases">
+    <p>Hoy, 30 de septiembre, celebro el regalo más hermoso que me dio la vida: <b>TÚ</b>.</p>
+    <p>Eres mi alegría, mi paz y mi sueño más bonito. 💖</p>
+    <p>Gracias por existir y por hacer mi mundo más mágico cada día. ✨</p>
+    <p>Te amo más de lo que las palabras pueden decir. ❤️</p>
+  </div>
+
+  <button onclick="playSong()">🎶 Escuchar nuestra canción</button>
+
+  <audio id="cancion" src="https://youtu.be/4jq_gnjcWWc?si=loGhkNpTFoGFD6pd.mp3"></audio>
+
+  <script>
+    function playSong() {
+      const cancion = document.getElementById("cancion");
+      cancion.play();
+    }
+
+    // Globitos 🎈
+    const colores = ["#ff6f91","#ff9671","#ffc75f","#f9f871","#845ec2","#00c9a7"];
+    function crearGlobos() {
+      const globo = document.createElement("div");
+      globo.className = "balloon";
+      globo.style.left = Math.random() * 100 + "vw";
+      globo.style.background = colores[Math.floor(Math.random()*colores.length)];
+      globo.style.animationDuration = (5 + Math.random()*5) + "s";
+      document.body.appendChild(globo);
+      setTimeout(() => globo.remove(), 10000);
+    }
+    setInterval(crearGlobos, 1000);
+  </script>
+</body>
+</html>

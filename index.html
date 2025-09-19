@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Feliz Cumpleaños, mi amor 💖</title>
+  <title>🎂 Feliz Cumpleaños Abigail 🎂</title>
   <style>
     body {
       margin: 0;
@@ -32,6 +32,17 @@
       margin-top: 20px;
       font-size: 1.2rem;
       max-width: 600px;
+    }
+    img {
+      margin-top: 20px;
+      border-radius: 20px;
+      width: 300px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      animation: aparecer 2s ease-in-out;
+    }
+    @keyframes aparecer {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
     }
     button {
       margin-top: 20px;
@@ -82,9 +93,13 @@
     <p>Te amo más de lo que las palabras pueden decir. ❤️</p>
   </div>
 
-  <button onclick="playSong()">🎶 Escuchar nuestra canción</button>
+  <!-- Imagen personalizada -->
+  <img src="https://i.imgur.com/1ZQZ1ZP.png" alt="Flores y corazones 💕">
 
-  <audio id="cancion" src="https://youtu.be/4jq_gnjcWWc?si=loGhkNpTFoGFD6pd"></audio>
+  <button onclick="playSong()">🎶 Escuchar 'Esta es pa' ti - Eme Malafe'</button>
+
+  <!-- Canción desde la carpeta local -->
+  <audio id="cancion" src="musica/eme-malafe-esta-es-pa-ti.mp3"></audio>
 
   <script>
     function playSong() {
@@ -107,3 +122,4 @@
   </script>
 </body>
 </html>
+
